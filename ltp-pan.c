@@ -519,8 +519,7 @@ int main(int argc, char **argv)
 				exit_stat++;
 				break;
 			}
-/*================================prepare insert code here=================================*/
-            printf("==============================================================\n");
+
 			cpid =
 			    run_child(coll->ary[c], running + i, quiet_mode,
 				      &failcnt, fmt_print, logfile);
@@ -716,7 +715,6 @@ check_pids(struct tag_pgrp *running, int *num_active, int keep_active,
 		{
 			int nl = strlen(running->cmd->name);
 			char * p = running->cmd->name + nl - 1;
-			fprintf(stdout,"check the case runtime at %s \n", running->cmd->name);
 			fprintf(stdout,"check the case runtime at %c \n", *p);
 			if (*p == 'U'){
 				timeout = 0xffffffff;
@@ -1435,25 +1433,12 @@ static void copy_buffered_output(struct tag_pgrp *running)
 static void write_test_start(struct tag_pgrp *running)
 {
 	if (!strcmp(reporttype, "rts")) {
-printf("==========================I want insert table here===============================");
-printf("====================here we just need run a script===============================");
 
-char * case_id=running->cmd->name;
-//char  case_id[]=case_idid;
-//in case of Segmentation fault compare_script must be long and long
-char  compare_script[100]="/mnt/nfs/tools/compare.sh ";
-
-
-//printf("===============%s",strcat(compare_script,case_id));
-system(strcat(compare_script,case_id));
-//execlp("sh", "sh", "-c", c_cmdline, (char *)0);
-
-
-
-
-
-
-printf("==========================I want insert table here===============================");
+    /*====================here we just need run a script===============================*/
+    char * case_id=running->cmd->name;
+    char  compare_script[100]="/mnt/nfs/tools/compare.sh ";
+    system(strcat(compare_script,case_id));
+    /*==========================I want insert table here===============================*/
 		printf
 		    ("%s\ntag=%s stime=%ld\ncmdline=\"%s\"\ncontacts=\"%s\"\nanalysis=%s\n%s\n",
 		     "<<<test_start>>>", running->cmd->name, running->mystime,
