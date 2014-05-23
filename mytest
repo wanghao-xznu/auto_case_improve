@@ -226,12 +226,12 @@ fi
 ###################################add by wh############################################################
 if [ -e ${TEST_PATH}/temp_cnt_${CMDFILE}_$tday ]; then
 
-WH_CASE_ID=`cat ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt | grep "TGE-" | tail -n 1 | awk '{print $1}'`
-    if [ ! $WH_CASE_ID ]; then 
+BAD_CASE_ID=`cat ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt | grep "TGE-" | tail -n 1 | awk '{print $1}'`
+    if [ ! $BAD_CASE_ID ]; then 
         echo 'NULL'
     else
-        sed '/'"$WH_CASE_ID"'/d' ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt | tee ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt 
-        sed 's/'"#$WH_CASE_ID"'/'"$WH_CASE_ID"'/' ${TEST_PATH}/runtest/temp_test_${CMDFILE}_$tday | tee ${TEST_PATH}/runtest/temp_test_${CMDFILE}_$tday 
+        sed '/'"$BAD_CASE_ID"'/d' ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt | tee ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt 
+        sed 's/'"#$BAD_CASE_ID"'/'"$BAD_CASE_ID"'/' ${TEST_PATH}/runtest/temp_test_${CMDFILE}_$tday | tee ${TEST_PATH}/runtest/temp_test_${CMDFILE}_$tday 
     fi
 fi
 ###################################add by wh############################################################
@@ -241,13 +241,13 @@ rm -f ${LTPROOT}/output/${ARCH_PLATFORM}_${CMDFILE}_log_$tday
 ###################################add by wh############################################################
 if [ -e ${TEST_PATH}/temp_cnt_${CMDFILE}_$tday ]; then
 
-WH_CASE_ID=`cat ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt | grep "TGE-" | tail -n 1 | awk '{print $1}'`
+BAD_CASE_ID=`cat ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt | grep "TGE-" | tail -n 1 | awk '{print $1}'`
 
-    if [ ! $WH_CASE_ID ]; then 
+    if [ ! $BAD_CASE_ID ]; then 
         echo 'NULL'
     else
-        sed '/'"$WH_CASE_ID"'/d' ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt | tee ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt 
-        sed 's/'"#$WH_CASE_ID"'/'"$WH_CASE_ID"'/' ${TEST_PATH}/runtest/temp_test_${CMDFILE}_$tday | tee ${TEST_PATH}/runtest/temp_test_${CMDFILE}_$tday 
+        sed '/'"$BAD_CASE_ID"'/d' ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt | tee ${TEST_PATH}/results/${ARCH_PLATFORM}_${TEST_TYPE}_${CMDFILE}_$tday.txt 
+        sed 's/'"#$BAD_CASE_ID"'/'"$BAD_CASE_ID"'/' ${TEST_PATH}/runtest/temp_test_${CMDFILE}_$tday | tee ${TEST_PATH}/runtest/temp_test_${CMDFILE}_$tday 
     fi
 fi
 ###################################add by wh############################################################
