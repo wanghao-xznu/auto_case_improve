@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 current_kernel=`/mnt/nfs/tools/printenv uimage`
 current_fdt=`/mnt/nfs/tools/printenv fdt_file`
 current_rootfs=`/mnt/nfs/tools/printenv nfsroot`
@@ -26,6 +26,6 @@ if [ "$current_rootfs" != "$case_rootfs" ]; then
 fi
 
 if [ $ct -ne 0 ];then
-   # sleep 15
-    echo reboot
+    sleep 15
+    reboot
 fi
