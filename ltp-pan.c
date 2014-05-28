@@ -1435,9 +1435,14 @@ static void write_test_start(struct tag_pgrp *running)
 	if (!strcmp(reporttype, "rts")) {
 
     /*====================here we just need run a script===============================*/
+    int ret=0;
     char * case_id=running->cmd->name;
     char  compare_script[100]="/mnt/nfs/tools/compare.sh ";
-    system(strcat(compare_script,case_id));
+    ret=system(strcat(compare_script,case_id));
+    if(ret!=0){
+        system("reboot");
+        while(1) sleep;
+    }
     /*==========================I want insert table here===============================*/
 		printf
 		    ("%s\ntag=%s stime=%ld\ncmdline=\"%s\"\ncontacts=\"%s\"\nanalysis=%s\n%s\n",

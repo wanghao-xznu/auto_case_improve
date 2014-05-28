@@ -11,6 +11,17 @@ case_fdt=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $3}'`
 case_rootfs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $4}'`; echo case_rootf=s$case_rootfs
 
 ct=0
+##############################in case there is no case id in table sheet##########################################
+case_id=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $1}'`
+if test -z "$case_id"
+then
+    exit 0
+else
+    echo "case_id=$case_id"
+fi
+##############################in case there is no case id in table sheet##########################################
+
+
 
 if [ "$current_kernel" != "$case_kernel" ]; then
     /mnt/nfs/tools/setenv uimage $case_kernel
@@ -26,6 +37,6 @@ if [ "$current_rootfs" != "$case_rootfs" ]; then
 fi
 
 if [ $ct -ne 0 ];then
-    sleep 15
-    reboot
+    exit -1 
 fi
+exit 0
