@@ -3,10 +3,10 @@
 #case ID               kernel                              fdt_file                                  rootfs        #
 #																												   #
 ####################################################################################################################
-TGE-LV-NOR-1104 uImage ecspi rootfs_r
-TGE-LV-NOR-1116 uImage ecspi rootfs_r
-TGE-LV-NAND-1101 uImage gpmi_weim rootfs_r
-TGE-LV-NAND-1001 uImage gpmi_weim rootfs_r
+TGE-LV-NOR-1104 uImage_mx63_L3.10.31_1.1.0_alpha_RC1_mx63 dtb_mx63ard_ecspi_L3.10.31_1.1.0_alpha_RC1 rootfs_r
+TGE-LV-NOR-1116 uImage_mx63_L3.10.31_1.1.0_alpha_RC1_mx63 dtb_mx63ard_ecspi_L3.10.31_1.1.0_alpha_RC1 rootfs_r
+TGE-LV-NAND-1101 uImage_mx63_L3.10.31_1.1.0_alpha_RC1_mx63 dtb_mx63ard_gpmi_weim_L3.10.31_1.1.0_alpha_RC1 rootfs_r
+TGE-LV-NAND-1001 uImage_mx63_L3.10.31_1.1.0_alpha_RC1_mx63 dtb_mx63ard_gpmi_weim_L3.10.31_1.1.0_alpha_RC1 rootfs_r
 
 
 ###########till now ,the simple way is replace with sed ##########
