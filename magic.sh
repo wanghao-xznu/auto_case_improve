@@ -3,9 +3,9 @@
 usage()
 {
     echo "===========please input below parameters============"
-    echo "==========='\$1' = release id=========================="
+    echo "==========='\$1' = release name========================"
     echo "==========='\$2' = soc id=============================="
-    echo "==========='\$3' = board id============================"
+    echo "==========='\$3' = board =============================="
     echo "==========='\$4' = fs backend=========================="
 }
 if [ $# -eq 0 ];then
@@ -26,6 +26,8 @@ platform=$2
 #done
 
     cat generate_table.txt | sed 's/uImage/'"uImage_$2_$1"'/g' | tee temp_table.txt
+    sleep 1
+    cat temp_table.txt | sed 's/dtb_default/'"dtb_$2$3_$1"'/g' | tee temp_table.txt
     sleep 1
     cat temp_table.txt | sed 's/ecspi/'"dtb_$2$3_ecspi_$1"'/g' | tee temp_table.txt
     sleep 1
