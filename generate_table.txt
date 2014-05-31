@@ -3,7 +3,8 @@
 #case ID               kernel                              fdt_file                                  rootfs        #
 #																												   #
 ####################################################################################################################
-TGE-LV-NOR-1104 uImage ecspi rootfs_r
-TGE-LV-NOR-1116 uImage ecspi rootfs_r
-TGE-LV-NAND-1101 uImage gpmi_weim rootfs_r
-TGE-LV-NAND-1001 uImage gpmi_weim rootfs_r
+TGE-LV-NOR-1104 uImage ecspi _r
+TGE-LV-NOR-1116 uImage ecspi _r
+TGE-LV-NAND-1101 uImage gpmi_weim _r
+TGE-LV-NAND-1001 uImage gpmi_weim _r
+TGE-LV-GPU-1001 uImage gpmi_weim _fb
