@@ -1441,7 +1441,7 @@ static void write_test_start(struct tag_pgrp *running)
     ret=system(strcat(compare_script,case_id));
     if(ret!=0){
         system("reboot");
-        while(1) sleep;
+        while(1) sleep(1);
     }
     /*==========================I want insert table here===============================*/
 		printf
