@@ -13,7 +13,7 @@ case_fdt=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $3}'`
 case_rootfs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $4}'`; echo case_rootf=s$case_rootfs
 #case_moreargs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $5}'`; echo case_rootf=s$case_rootfs
 dump=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $4}'`;
-case_moreargs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | sed 's/'"$dump "'/|/' | awk -F "|" '{print $2}'`
+case_moreargs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | sed 's%'"$dump "'%|%' | awk -F "|" '{print $2}'`
 
 ##############################in case there is no case id in table sheet##########################################
 case_id=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $1}'`
