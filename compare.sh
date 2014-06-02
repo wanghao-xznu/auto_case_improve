@@ -2,7 +2,7 @@
 current_kernel=`/mnt/nfs/tools/printenv uimage`
 current_fdt=`/mnt/nfs/tools/printenv fdt_file`
 current_rootfs=`/mnt/nfs/tools/printenv nfsroot`
-current_moreargs=`/mnt/nfs/tools/printenv smp`
+current_moreargs=`/mnt/nfs/tools/printenv more_args`
 #case_kernel=`cat auto_case_table.txt | grep "TGE-LV-NAND-1101" | awk '{print $2}'`
 #case_fdt=`cat auto_case_table.txt | grep "TGE-LV-NAND-1101" | awk '{print $3}'`
 #case_rootfs=`cat auto_case_table.txt | grep "TGE-LV-NAND-1101" | awk '{print $4}'`
@@ -14,7 +14,7 @@ case_rootfs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $4
 #case_moreargs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $5}'`; echo case_rootf=s$case_rootfs
 dump=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $4}'`;
 case_moreargs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | sed 's%'"$dump "'%|%' | awk -F "|" '{print $2}'`
-
+echo case_moreargs=$case_moreargs
 ##############################in case there is no case id in table sheet##########################################
 case_id=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $1}'`
 if test -z "$case_id"
@@ -44,7 +44,7 @@ if [ x"$current_rootfs"x != x"$case_rootfs"x ]; then
     ct=$(expr $ct + 1)
 fi
 if [ x"$current_moreargs"x != x"$case_moreargs"x ]; then
-    /mnt/nfs/tools/setenv smp $case_moreargs
+    /mnt/nfs/tools/setenv more_args "$case_moreargs"
     ct=$(expr $ct + 1)
 fi
 
