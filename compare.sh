@@ -10,21 +10,22 @@ ct=0
 
 case_kernel=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $2}'`; echo case_kernel=$case_kernel
 case_fdt=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $3}'`   ; echo case_fdt=$case_fdt
-case_rootfs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $4}'`; echo case_rootf=s$case_rootfs
+case_rootfs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $4}'`; echo case_rootf=$case_rootfs
 #case_moreargs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $5}'`; echo case_rootf=s$case_rootfs
 dump=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $4}'`;
 case_moreargs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | sed 's%'"$dump "'%|%' | awk -F "|" '{print $2}'`
 echo case_moreargs=$case_moreargs
 ##############################in case there is no case id in table sheet##########################################
 case_id=`cat /mnt/nfs/tools/auto_case_table.txt | grep "$1" | awk '{print $1}'`
+echo "========================the current case=$1========================================="
 if test -z "$case_id"
 then
     ############here need use default kernel dtb rootfs##############
     #exit -1                   ####can't return zero,because ltp-pan check the exit vaule and have a reboot#####
     case_kernel=`cat /mnt/nfs/tools/auto_case_table.txt | grep "TGE-LV-DEFAULT-CASE" | awk '{print $2}'`; echo case_kernel=$case_kernel
     case_fdt=`cat /mnt/nfs/tools/auto_case_table.txt | grep "TGE-LV-DEFAULT-CASE" | awk '{print $3}'`   ; echo case_fdt=$case_fdt
-    case_rootfs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "TGE-LV-DEFAULT-CASE" | awk '{print $4}'`; echo case_rootf=s$case_rootfs
-    case_moreargs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "TGE-LV-DEFAULT-CASE" | awk '{print $5}'`; echo case_moreargs=s$case_moreargs
+    case_rootfs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "TGE-LV-DEFAULT-CASE" | awk '{print $4}'`; echo case_rootf=$case_rootfs
+    case_moreargs=`cat /mnt/nfs/tools/auto_case_table.txt | grep "TGE-LV-DEFAULT-CASE" | awk '{print $5}'`; echo case_moreargs=$case_moreargs
 else
     echo "case_id=$case_id"
 fi
@@ -32,15 +33,15 @@ fi
 
 
 if [ x"$current_kernel"x != x"$case_kernel"x ]; then
-    /mnt/nfs/tools/setenv uimage $case_kernel
+    /mnt/nfs/tools/setenv uimage "$case_kernel"
     ct=$(expr $ct + 1)
 fi
 if [ x"$current_fdt"x != x"$case_fdt"x ]; then
-    /mnt/nfs/tools/setenv fdt_file $case_fdt
+    /mnt/nfs/tools/setenv fdt_file "$case_fdt"
     ct=$(expr $ct + 1)
 fi
 if [ x"$current_rootfs"x != x"$case_rootfs"x ]; then
-    /mnt/nfs/tools/setenv nfsroot $case_rootfs
+    /mnt/nfs/tools/setenv nfsroot "$case_rootfs"
     ct=$(expr $ct + 1)
 fi
 if [ x"$current_moreargs"x != x"$case_moreargs"x ]; then
