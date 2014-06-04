@@ -1,0 +1,2 @@
+TGE-LV-TEST-CASE kernel=uImage  fdt_file=ecspi  rootfs=rootfs_r_fb more_args=wh xss wh xss wh
+#cat test.txt | grep "TGE-LV" | awk -F "=" '{print $2}'| awk '{print $1}'#
