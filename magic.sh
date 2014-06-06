@@ -2,16 +2,22 @@
 
 usage()
 {
-    echo "===========please input below parameters============"
-    echo "==========='\$1' = release name========================"
-    echo "==========='\$2' = soc id=============================="
-    echo "==========='\$3' = board =============================="
-    echo "==========='\$4' = release or daily_test=========================="
+    echo "============================please input below parameters================================"
+    echo "============================'\$1' = release name========================================="
+    echo "============================'\$2' = soc id==============================================="
+    echo "============================'\$3' = board ==============================================="
+    echo "============================'\$4' = GEN_FILE_NAME ======================================="
+    echo "============================'\$5' = REL_TABLE_NAME ======================================"
+    echo "+++++++++++example: ./magic.sh L3.10.31_1.1.0_alpha_RC1 mx63 ard+++++++++++++++++++++++++"
 }
-if [ $# -eq 0 ];then
+if [ $# -ne 5 ];then
     usage
     exit 1
 fi
+
+
+GENERATE_FILE_NAME=$4
+REAL_TABLE_FILE_NAME=$5
 
 release_id=$1
 platform=$2
@@ -25,7 +31,7 @@ platform=$2
 #    sleep 1
 #done
 
-    cat generate_table.txt | sed 's/uImage/'"uImage_$2_$1"'/g' | tee temp_table.txt
+    cat $4 | sed 's/uImage/'"uImage_$2_$1"'/g' | tee temp_table.txt
     sleep 1
     cat temp_table.txt | sed 's/dtb_default/'"dtb_$2$3_$1"'/g' | tee temp_table.txt
     sleep 1
@@ -44,7 +50,8 @@ platform=$2
 #############last define the default###################
     echo " " >> temp_table.txt 
     echo "TGE-LV-DEFAULT-CASE uImage_$2_$1 dtb_$2$3_$1 /rootfs/i$2_rootfs_r" >> temp_table.txt
-#    cp temp_table.txt auto_case_table.txt
+    sleep 1
+    cp ./temp_table.txt ./$5
 
 
 

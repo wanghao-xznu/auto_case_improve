@@ -96,7 +96,7 @@ struct orphan_pgrp {
 
 static pid_t run_child(struct coll_entry *colle, struct tag_pgrp *active,
 		       int quiet_mode, int *failcnt, int fmt_print,
-		       FILE * logfile);
+		       FILE * logfile, char *tablefile);
 static char *slurp(char *file);
 static struct collection *get_collection(char *file, int optind, int argc,
 					 char **argv);
@@ -104,7 +104,7 @@ static void pids_running(struct tag_pgrp *running, int keep_active);
 static int check_pids(struct tag_pgrp *running, int *num_active,
 		      int keep_active, FILE * logfile, FILE * failcmdfile,
 		      struct orphan_pgrp *orphans, int fmt_print,
-		      int *failcnt, int quiet_mode);
+		      int *failcnt, int quiet_mode, char *tablefile);
 static void propagate_signal(struct tag_pgrp *running, int keep_active,
 			     struct orphan_pgrp *orphans);
 static void dump_coll(struct collection *coll);
@@ -114,7 +114,7 @@ static void orphans_running(struct orphan_pgrp *orphans);
 static void check_orphans(struct orphan_pgrp *orphans, int sig);
 
 static void copy_buffered_output(struct tag_pgrp *running);
-static void write_test_start(struct tag_pgrp *running);
+static void write_test_start(struct tag_pgrp *running, char *tablefile);
 static void write_test_end(struct tag_pgrp *running, const char *init_status,
 			   time_t exit_time, char *term_type, int stat_loc,
 			   int term_id, struct tms *tms1, struct tms *tms2);
@@ -152,6 +152,7 @@ int main(int argc, char **argv)
 	char *logfilename = NULL;
 	char *failcmdfilename = NULL;
 	char *outputfilename = NULL;
+	char *tablefilename = NULL;
 	struct collection *coll = NULL;
 	struct tag_pgrp *running;
 	struct orphan_pgrp *orphans, *orph;
@@ -181,7 +182,7 @@ int main(int argc, char **argv)
 	struct sigaction sa;
 
 	while ((c =
-		getopt(argc, argv, "AO:Sa:C:d:ef:hl:n:o:pqr:s:t:x:y")) != -1) {
+		getopt(argc, argv, "AO:Sa:C:d:ef:T:hl:n:o:pqr:s:t:x:y")) != -1) {
 		switch (c) {
 		case 'A':	/* all-stop flag */
 			has_brakes = 1;
@@ -206,6 +207,9 @@ int main(int argc, char **argv)
 			track_exit_stats = 1;
 			break;
 		case 'f':	/* filename to read test tags from */
+			filename = strdup(optarg);
+			break;
+		case 'T':	/* table file name for check */
 			filename = strdup(optarg);
 			break;
 		case 'h':	/* help */
@@ -522,7 +526,7 @@ int main(int argc, char **argv)
 
 			cpid =
 			    run_child(coll->ary[c], running + i, quiet_mode,
-				      &failcnt, fmt_print, logfile);
+				      &failcnt, fmt_print, logfile, tablefilename);
 			if (cpid != -1)
 				++num_active;
 			if ((cpid != -1 || sequential) && starts > 0)
@@ -571,7 +575,7 @@ int main(int argc, char **argv)
 
 		err = check_pids(running, &num_active, keep_active, logfile,
 				 failcmdfile, orphans, fmt_print, &failcnt,
-				 quiet_mode);
+				 quiet_mode, tablefilename);
 		if (Debug & Drunning) {
 			pids_running(running, keep_active);
 			orphans_running(orphans);
@@ -682,7 +686,7 @@ propagate_signal(struct tag_pgrp *running, int keep_active,
 static int
 check_pids(struct tag_pgrp *running, int *num_active, int keep_active,
 	   FILE * logfile, FILE * failcmdfile, struct orphan_pgrp *orphans,
-	   int fmt_print, int *failcnt, int quiet_mode)
+	   int fmt_print, int *failcnt, int quiet_mode, char *tablefile)
 {
 	int w;
 	pid_t cpid;
@@ -926,7 +930,7 @@ STEP2:
 
 				if (test_out_dir) {
 					if (!quiet_mode)
-						write_test_start(running + i);
+						write_test_start(running + i, tablefile);
 					copy_buffered_output(running + i);
 					unlink(running[i].output);
 				}
@@ -972,7 +976,7 @@ STEP2:
 
 static pid_t
 run_child(struct coll_entry *colle, struct tag_pgrp *active, int quiet_mode,
-	  int *failcnt, int fmt_print, FILE * logfile)
+	  int *failcnt, int fmt_print, FILE * logfile, char *tablefile)
 {
 	ssize_t errlen;
 	int cpid;
@@ -1026,7 +1030,7 @@ run_child(struct coll_entry *colle, struct tag_pgrp *active, int quiet_mode,
 
 	if (!test_out_dir)
 		if (!quiet_mode)
-			write_test_start(active);
+			write_test_start(active, tablefile);
 
 	if ((cpid = fork()) == -1) {
 		fprintf(stderr,
@@ -1186,7 +1190,6 @@ run_child(struct coll_entry *colle, struct tag_pgrp *active, int quiet_mode,
 		}
 
 		if (!quiet_mode) {
-			//write_test_start(active, errbuf);
 			write_test_end(active, errbuf, end_time, termtype,
 				       status, termid, &notime, &notime);
 		}
@@ -1430,15 +1433,16 @@ static void copy_buffered_output(struct tag_pgrp *running)
 	}
 }
 
-static void write_test_start(struct tag_pgrp *running)
+static void write_test_start(struct tag_pgrp *running, char *tablefile)
 {
 	if (!strcmp(reporttype, "rts")) {
 
     /*====================here we just need run a script===============================*/
     int ret=0;
     char * case_id=running->cmd->name;
-    char  compare_script[100]="/mnt/nfs/tools/compare.sh ";
-    ret=system(strcat(compare_script,case_id));
+    char  compare_script[200]="/mnt/nfs/tools/compare.sh ";
+    strcat(compare_script, case_id);
+    ret=system(strcat(compare_script, tablefile));
     if(ret!=0){
         system("reboot");
         while(1) sleep(1);
