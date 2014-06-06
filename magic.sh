@@ -6,7 +6,7 @@ usage()
     echo "==========='\$1' = release name========================"
     echo "==========='\$2' = soc id=============================="
     echo "==========='\$3' = board =============================="
-    echo "==========='\$4' = fs backend=========================="
+    echo "==========='\$4' = release or daily_test=========================="
 }
 if [ $# -eq 0 ];then
     usage
@@ -33,7 +33,7 @@ platform=$2
     sleep 1
     cat temp_table.txt | sed 's/gpmi_weim/'"dtb_$2$3_gpmi_weim_$1"'/g' | tee temp_table.txt
     sleep 1
-    cat temp_table.txt | sed 's/_r/'"\/rootfs\/i$2_rootfs_r"'/g' | tee temp_table.txt
+    cat temp_table.txt | sed 's/_x/'"\/rootfs\/i$2_rootfs_r"'/g' | tee temp_table.txt
     sleep 1
     cat temp_table.txt | sed 's/_fb/'"\/rootfs\/i$2_rootfs_r_fb"'/g' | tee temp_table.txt
     sleep 1
@@ -42,6 +42,7 @@ platform=$2
     cat temp_table.txt | sed 's/_wld/'"\/rootfs\/i$2_rootfs_r_wld"'/g' | tee temp_table.txt
     sleep 1
 #############last define the default###################
+    echo " " >> temp_table.txt 
     echo "TGE-LV-DEFAULT-CASE uImage_$2_$1 dtb_$2$3_$1 /rootfs/i$2_rootfs_r" >> temp_table.txt
 #    cp temp_table.txt auto_case_table.txt
 
