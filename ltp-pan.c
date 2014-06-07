@@ -145,6 +145,7 @@ int Debug = 0;
 int main(int argc, char **argv)
 {
     printf("hello , begin use ltp-pan\n");
+    printf("hello , begin use ltp-pan\n");
 	extern char *optarg;
 	extern int optind;
 	char *zooname = NULL;	/* name of the zoo file to use */
@@ -210,7 +211,7 @@ int main(int argc, char **argv)
 			filename = strdup(optarg);
 			break;
 		case 'T':	/* table file name for check */
-			filename = strdup(optarg);
+			tablefilename = strdup(optarg);
 			break;
 		case 'h':	/* help */
 			fprintf(stdout,
@@ -1438,10 +1439,13 @@ static void write_test_start(struct tag_pgrp *running, char *tablefile)
 	if (!strcmp(reporttype, "rts")) {
 
     /*====================here we just need run a script===============================*/
+        printf("=====================just a test=============\n");
+        printf("=====================tablefile=%s\n",tablefile);
     int ret=0;
     char * case_id=running->cmd->name;
     char  compare_script[200]="/mnt/nfs/tools/compare.sh ";
     strcat(compare_script, case_id);
+    strcat(compare_script, " ");
     ret=system(strcat(compare_script, tablefile));
     if(ret!=0){
         system("reboot");
