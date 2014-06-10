@@ -52,6 +52,16 @@ mac=$(cat /sys/class/net/eth0/address | sed 's/:/_/g')
 tday=${mac}
 cat ${TEST_PATH}/runtest/$CMDFILE | sed 's/^#//g' > ${TEST_PATH}/runtest/temp_test_${CMDFILE}_$tday
 
+
+
+
+if [ ! -e ${TEST_PATH}/temp_cnt_${CMDFILE}_$tday ]; then
+FIRST_CASE_ID=`cat ${TEST_PATH}/runtest/temp_test_${CMDFILE_$tday} | grep "TGE-" | head -n 1 | awk '{print $1}'`
+/mnt/nfs/tools/compare.sh $FIRST_CASE_ID $TABLE_FILE
+fi
+
+
+
 if [ -e ${TEST_PATH}/temp_cnt_${CMDFILE}_$tday ]; then
 #1 not first run, need change the command file skip the last one
 #find the last execute one 
