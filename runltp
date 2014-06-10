@@ -212,7 +212,7 @@ main()
 
     version_date=$(cat "$LTPROOT/Version")
 
-    while getopts a:c:C:d:D:f:T:F:ehi:K:g:l:m:M:Nno:pqr:s:S:t:T:w:x:b:B: arg
+    while getopts a:c:C:d:D:f:A:F:ehi:K:g:l:m:M:Nno:pqr:s:S:t:T:w:x:b:B: arg
     do  case $arg in
         a)  EMAIL_TO=$OPTARG
             ALT_EMAIL_OUT=1;;
@@ -282,7 +282,7 @@ main()
             # Can be more then one file, just separate it with ',', like:
             # -f nfs,commands,/tmp/testfile
             CMDFILES=$OPTARG;;
-        T)  # compare with the table sheet file.
+        A)  # compare with the table sheet file.
             TABLEFILE="-T $OPTARG" ;;
 	F)	INJECT_KERNEL_FAULT=1
 		#Seperate out the NO_OF_LOOPS & FAULT_PERCENTAGE
