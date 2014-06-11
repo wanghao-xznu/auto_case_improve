@@ -1,0 +1,2 @@
+TGE-LV-USB-0001 kernel=usb-host-otg fdt_file=usb-host-otg_gadget 
+TGE-LV-USB-0002 kernel=usb-host-only fdt_file=dtb_default

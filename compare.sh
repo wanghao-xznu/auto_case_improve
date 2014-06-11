@@ -12,10 +12,10 @@ current_moreargs=`/mnt/nfs/tools/printenv more_args`
 ct=0
 
 case_kernel=`cat $TABLE_SHEET_PATH/$2 | grep "$1" | awk -F "kernel=" '{print $2}' | awk '{print $1}'`; echo case_kernel=$case_kernel
-case_fdt=`cat $TABLE_SHEET_PATH/$2 | grep "$1" | awk -F "fdt_file=" '{print $2}' | awk '{print $1}'`   ; echo case_fdt=$case_fdt
+case_fdt=`cat $TABLE_SHEET_PATH/$2 | grep "$1" | awk -F "fdt_file=" '{print $2}' | awk '{print $1}'`; echo case_fdt=$case_fdt
 case_rootfs=`cat $TABLE_SHEET_PATH/$2 | grep "$1" | awk -F "rootfs=" '{print $2}' | awk '{print $1}'`; echo case_rootf=$case_rootfs
 
-case_moreargs=`cat $TABLE_SHEET_PATH/$2 | grep "$1" | awk -F "more_args=" '{print $2}'`;echo case_moreargs=$case_moreargs
+case_moreargs=`cat $TABLE_SHEET_PATH/$2 | grep "$1" | awk -F "more_args=" '{print $2}'| awk '{print $1}'`;echo case_moreargs=$case_moreargs
 
 ##############################in case there is no case id in table sheet##########################################
 case_id=`cat $TABLE_SHEET_PATH/$2 | grep "$1" | awk '{print $1}'`
