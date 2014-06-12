@@ -1,2 +1,21 @@
-TGE-LV-USB-0001 kernel=usb-host-otg fdt_file=usb-host-otg_gadget 
-TGE-LV-USB-0002 kernel=usb-host-only fdt_file=dtb_default
+chip=i.MX6SX, os=Linux_3.10, board_type=Sabre_SDB
+TGE-LV-USB-OTG-2105 
+TGE-LV-USB-OTG-2801 
+TGE-LV-USB-OTG-0060 
+TGE-LV-USB-LOADABLE-0015 kernel=usb-gadget-only_15  fdt_file=dtb_default  rootfs=_x
+TGE-LV-USB-LOADABLE-0016 kernel=usb-gadget-only_16  fdt_file=dtb_default  rootfs=_x
+TGE-LV-USB-OTG-0070 
+TGE-LV-USB-LOADABLE-0010 kernel=usb-host-otg fdt_file=dtb_default rootfs=_x
+TGE-LV-USB-LOADABLE-0010 kernel=usb-host-otg fdt_file=dtb_default rootfs=_x
+TGE-LV-USB-LOADABLE-0012 kernel=usb-host-otg  fdt_file=usb-host-otg_gadget  rootfs=_x
+TGE-LV-USB-LOADABLE-0012 kernel=usb-host-otg  fdt_file=usb-host-otg_gadget  rootfs=_x
+TGE-LV-USB-LOADABLE-0015 kernel=usb-gadget-only_15  fdt_file=dtb_default  rootfs=_x
+TGE-LV-USB-LOADABLE-0016 kernel=usb-gadget-only_16  fdt_file=dtb_default  rootfs=_x
+TGE-LV-USB-LOADABLE-0017 kernel=usb-gadget-only_17  fdt_file=dtb_default  rootfs=_x
+TGE-LV-USB-LOADABLE-0018 kernel=usb-gadget-only_18  fdt_file=dtb_default  rootfs=_x
+TGE-LV-USB-LOADABLE-0018 kernel=usb-gadget-only_18  fdt_file=dtb_default  rootfs=_x
+TGE-LV-USB-LOADABLE-0018 kernel=usb-gadget-only_18  fdt_file=dtb_default  rootfs=_x
+TGE-LV-USB-LOADABLE-0018 kernel=usb-gadget-only_18  fdt_file=dtb_default  rootfs=_x
+TGE-LV-USB-LOADABLE-0018 kernel=usb-gadget-only_18  fdt_file=dtb_default  rootfs=_x
+TGE-LV-USB-LOADABLE-0018 kernel=usb-gadget-only_18  fdt_file=dtb_default  rootfs=_x
+TGE-LV-USB-OTG-0066 

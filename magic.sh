@@ -9,6 +9,7 @@ usage()
     echo "============================'\$4' = GEN_FILE_NAME ======================================="
     echo "============================'\$5' = REL_TABLE_NAME ======================================"
     echo "+++++++++++example: ./magic.sh L3.10.31_1.1.0_alpha_RC1 mx63 ard+++++++++++++++++++++++++"
+    echo "============================release or daily============================================="
 }
 if [ $# -ne 5 ];then
     usage
@@ -36,33 +37,33 @@ platform=$2
     cat temp_table.txt | sed 's/dtb_default/'"dtb_$2$3_$1"'/g' | tee temp_table.txt
     sleep 1
     cat temp_table.txt | sed 's/ecspi/'"dtb_$2$3_ecspi_$1"'/g' | tee temp_table.txt
-    sleep 1
+#    sleep 1
     cat temp_table.txt | sed 's/gpmi_weim/'"dtb_$2$3_gpmi_weim_$1"'/g' | tee temp_table.txt
-    sleep 1
+#    sleep 1
     cat temp_table.txt | sed 's/rootfs=_x/'"rootfs=\/rootfs\/i$2_rootfs_r"'/g' | tee temp_table.txt
-    sleep 1
+#    sleep 1
     cat temp_table.txt | sed 's/rootfs=_fb/'"rootfs=\/rootfs\/i$2_rootfs_r_fb"'/g' | tee temp_table.txt
-    sleep 1
+#    sleep 1
     cat temp_table.txt | sed 's/rootfs=_dfb/'"rootfs=\/rootfs\/i$2_rootfs_r_dfb"'/g' | tee temp_table.txt
-    sleep 1
+#    sleep 1
     cat temp_table.txt | sed 's/rootfs=_wld/'"rootfs=\/rootfs\/i$2_rootfs_r_wld"'/g' | tee temp_table.txt
-    sleep 1
+#    sleep 1
 #############usb automation case#######################
 
 usb_case_kernel_count=`cat temp_table.txt | grep "kernel=usb-" | wc -l`
 for i in $(seq $usb_case_kernel_count)
 do
-    usb_case_kernel_keyword=`cat temp_table.txt | grep "kernel=usb-" | tail -n $i | head -n 1 | awk -F "kernel=" '{print $2}' | awk '{print $1}'`
-    cat temp_table.txt | sed 's/'"kernel=$usb_case_kernel_keyword"'/'"kernel=uImage_$2_$usb_case_kernel_keyword"'/g' | tee temp_table.txt
-    sleep 1
+    usb_case_kernel_keyword=`cat temp_table.txt | grep "kernel=usb-" | tail -n $i | head -n 1 | awk -F "kernel=usb-" '{print $2}' | awk '{print $1}'`
+    cat temp_table.txt | sed 's/'"kernel=usb-$usb_case_kernel_keyword"'/'"kernel=uImage_$2_usb-$usb_case_kernel_keyword"'/g' | tee temp_table.txt
+#    sleep 1
 done
 
 usb_case_dtb_count=`cat temp_table.txt | grep "fdt_file=usb-" | wc -l`
 for j in $(seq $usb_case_dtb_count)
 do
-    usb_case_dtb_keyword=`cat temp_table.txt | grep "fdt_file=usb-" | tail -n $j | head -n 1| awk -F "fdt_file=" '{print $2}' | awk '{print $1}' `
-    cat temp_table.txt | sed 's/'"fdt_file=$usb_case_dtb_keyword"'/'"fdt_file=dtb_$2$3_$usb_case_dtb_keyword"'/g' | tee temp_table.txt
-    sleep 1
+    usb_case_dtb_keyword=`cat temp_table.txt | grep "fdt_file=usb-" | tail -n $j | head -n 1| awk -F "fdt_file=usb-" '{print $2}' | awk '{print $1}' `
+    cat temp_table.txt | sed 's/'"fdt_file=usb-$usb_case_dtb_keyword"'/'"fdt_file=dtb_$2$3_usb-$usb_case_dtb_keyword"'/g' | tee temp_table.txt
+#    sleep 1
 done
 
 

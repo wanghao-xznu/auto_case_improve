@@ -1,4 +1,23 @@
-TGE-LV-USB-0001 kernel=uImage_mx63_usb-host-otg fdt_file=dtb_mx63ard_usb-host-otg_gadget 
-TGE-LV-USB-0002 kernel=uImage_mx63_usb-host-only fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1
+chip=i.MX6SX, os=Linux_3.10, board_type=Sabre_SDB
+TGE-LV-USB-OTG-2105 
+TGE-LV-USB-OTG-2801 
+TGE-LV-USB-OTG-0060 
+TGE-LV-USB-LOADABLE-0015 kernel=uImage_mx63_usb-gadget-only_15  fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0016 kernel=uImage_mx63_usb-gadget-only_16  fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-OTG-0070 
+TGE-LV-USB-LOADABLE-0010 kernel=uImage_mx63_usb-host-otg fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1 rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0010 kernel=uImage_mx63_usb-host-otg fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1 rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0012 kernel=uImage_mx63_usb-host-otg  fdt_file=dtb_mx63ard_usb-host-otg_gadget  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0012 kernel=uImage_mx63_usb-host-otg  fdt_file=dtb_mx63ard_usb-host-otg_gadget  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0015 kernel=uImage_mx63_usb-gadget-only_15  fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0016 kernel=uImage_mx63_usb-gadget-only_16  fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0017 kernel=uImage_mx63_usb-gadget-only_17  fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0018 kernel=uImage_mx63_usb-gadget-only_18  fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0018 kernel=uImage_mx63_usb-gadget-only_18  fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0018 kernel=uImage_mx63_usb-gadget-only_18  fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0018 kernel=uImage_mx63_usb-gadget-only_18  fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0018 kernel=uImage_mx63_usb-gadget-only_18  fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-LOADABLE-0018 kernel=uImage_mx63_usb-gadget-only_18  fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1  rootfs=/rootfs/imx63_rootfs_r
+TGE-LV-USB-OTG-0066 
  
 TGE-LV-DEFAULT-CASE uImage_mx63_L3.10.31_1.1.0_alpha_RC1 dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1 /rootfs/imx63_rootfs_r
