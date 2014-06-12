@@ -39,13 +39,13 @@ platform=$2
     sleep 1
     cat temp_table.txt | sed 's/gpmi_weim/'"dtb_$2$3_gpmi_weim_$1"'/g' | tee temp_table.txt
     sleep 1
-    cat temp_table.txt | sed 's/_x/'"\/rootfs\/i$2_rootfs_r"'/g' | tee temp_table.txt
+    cat temp_table.txt | sed 's/rootfs=_x/'"rootfs=\/rootfs\/i$2_rootfs_r"'/g' | tee temp_table.txt
     sleep 1
-    cat temp_table.txt | sed 's/_fb/'"\/rootfs\/i$2_rootfs_r_fb"'/g' | tee temp_table.txt
+    cat temp_table.txt | sed 's/rootfs=_fb/'"rootfs=\/rootfs\/i$2_rootfs_r_fb"'/g' | tee temp_table.txt
     sleep 1
-    cat temp_table.txt | sed 's/_dfb/'"\/rootfs\/i$2_rootfs_r_dfb"'/g' | tee temp_table.txt
+    cat temp_table.txt | sed 's/rootfs=_dfb/'"rootfs=\/rootfs\/i$2_rootfs_r_dfb"'/g' | tee temp_table.txt
     sleep 1
-    cat temp_table.txt | sed 's/_wld/'"\/rootfs\/i$2_rootfs_r_wld"'/g' | tee temp_table.txt
+    cat temp_table.txt | sed 's/rootfs=_wld/'"rootfs=\/rootfs\/i$2_rootfs_r_wld"'/g' | tee temp_table.txt
     sleep 1
 #############usb automation case#######################
 
