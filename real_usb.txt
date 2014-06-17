@@ -1,4 +1,0 @@
-TGE-LV-USB-0001 kernel=uImage_mx63_usb-host-otg fdt_file=dtb_mx63ard_usb-host-otg_gadget 
-TGE-LV-USB-0002 kernel=uImage_mx63_usb-host-only fdt_file=dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1
- 
-TGE-LV-DEFAULT-CASE uImage_mx63_L3.10.31_1.1.0_alpha_RC1 dtb_mx63ard_L3.10.31_1.1.0_alpha_RC1 /rootfs/imx63_rootfs_r
