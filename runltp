@@ -283,7 +283,7 @@ main()
             # -f nfs,commands,/tmp/testfile
             CMDFILES=$OPTARG;;
         A)  # compare with the table sheet file.
-            TABLEFILE="-T $OPTARG" ;;
+            TABLEFILE="-T $LTPROOT/runtest/$OPTARG" ;;
 	F)	INJECT_KERNEL_FAULT=1
 		#Seperate out the NO_OF_LOOPS & FAULT_PERCENTAGE
 		INJECT_FAULT_LOOPS_PER_TEST=`echo $OPTARG |cut -d',' -f1 | tr -d '\n' | tr -d ' '`

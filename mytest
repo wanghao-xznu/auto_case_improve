@@ -53,13 +53,15 @@ tday=${mac}
 cat ${TEST_PATH}/runtest/$CMDFILE | sed 's/^#//g' > ${TEST_PATH}/runtest/temp_test_${CMDFILE}_$tday
 
 
-
-
 if [ ! -e ${TEST_PATH}/temp_cnt_${CMDFILE}_$tday ]; then
-FIRST_CASE_ID=`cat ${TEST_PATH}/runtest/temp_test_${CMDFILE_$tday} | grep "TGE-" | head -n 1 | awk '{print $1}'`
-/mnt/nfs/tools/compare.sh $FIRST_CASE_ID $TABLE_FILE
+FIRST_CASE_ID=`cat ${TEST_PATH}/runtest/temp_test_${CMDFILE}_$tday | grep "TGE-" | head -n 1 | awk '{print $1}'`
+/mnt/nfs/tools/compare.sh $FIRST_CASE_ID ${TEST_PATH}/runtest/$TABLE_FILE
+RET=$?
+    if [ $RET -ne 0 ];then
+        reboot
+        sleep 300
+    fi
 fi
-
 
 
 if [ -e ${TEST_PATH}/temp_cnt_${CMDFILE}_$tday ]; then

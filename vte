@@ -134,7 +134,6 @@ if [ ! -z "$test_flag" ]; then
  #tstatus=$($TOOLS_DIR/uclient 10.192.225.222 12500 ${platfm}_HELLO | grep ACK | wc -l)
  tstatus=1
  if [ $tstatus -gt 0 ]; then
-  echo "++++++++++++++++++++$table_file++++++++++++++++test table file ++++++++++++++++++++++++++++++++++++++++++++++"
   cd /mnt/nfs/${ltp_root} && /mnt/nfs/${ltp_root}/mytest $test_file $STRESS_APD $table_file
   #test finished start a process to reset board at
   if [ $? -eq 0 ]; then

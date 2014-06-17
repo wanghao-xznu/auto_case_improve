@@ -1,0 +1,41 @@
+chip=i.MX6Q, os=Linux_3.10, board_type=ARD
+TGE-LV-NOR-1104 kernel=uImage fdt_file=ecspi rootfs=_x
+TGE-LV-NOR-1116 kernel=uImage fdt_file=ecspi rootfs=_x
+TGE-LV-NOR-1301 kernel=uImage fdt_file=ecspi rootfs=_x
+TGE-LV-VPU-1024 
+TGE-LV-Buildconfig-00045 
+TGE-LV-NOR-1203 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=8000000.nor:512k(boot),128k(cfg),128k(dtb),10m(kernel),10m(rootfs)
+TGE-LV-NOR-1204 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=8000000.nor:512k(boot),128k(cfg),128k(dtb),10m(kernel),10m(rootfs)
+TGE-LV-NOR-1216 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=8000000.nor:512k(boot),128k(cfg),128k(dtb),10m(kernel),10m(rootfs)
+TGE-LV-NOR-1217 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=8000000.nor:512k(boot),128k(cfg),128k(dtb),10m(kernel),10m(rootfs)
+TGE-LV-HDMI-EDID-0010 
+TGE-LV-HDMI-EDID-0011 
+TGE-LV-NOR-1218 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=8000000.nor:512k(boot),128k(cfg),128k(dtb),10m(kernel),10m(rootfs)
+TGE-LV-NOR-1118 kernel=uImage fdt_file=ecspi rootfs=_x
+TGE-LV-NOR-1219 kernel=uImage fdt_file=gpmi_weim rootfs=_x
+TGE-LV-NOR-1220 kernel=uImage fdt_file=gpmi_weim rootfs=_x
+TGE-LV-NOR-1221 kernel=uImage fdt_file=ecspi rootfs=_x
+TGE-LV-NOR-1222 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=8000000.nor:512k(boot),128k(cfg),128k(dtb),10m(kernel),10m(rootfs)
+TGE-LV-BTL-MFG-0030 
+TGE-LV-NOR-1302 kernel=uImage fdt_file=ecspi rootfs=_x
+TGE-LV-NOR-1303 
+TGE-LV-NOR-1223 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=8000000.nor:512k(boot),128k(cfg),128k(dtb),10m(kernel),10m(rootfs)
+TGE-LV-NAND-1101 kernel=uImage fdt_file=gpmi_weim rootfs=_x
+TGE-LV-NAND-1000 kernel=uImage fdt_file=gpmi_weim rootfs=_x
+TGE-LV-NAND-1001 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=gpmi-nand:20m(boot),20m(kernel),1024m(rootfs),-(usr)
+TGE-LV-NAND-1005 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=gpmi-nand:16m(boot),16m(kernel),128m(rootfs),-(usr) gpmi_debug_init
+TGE-LV-NAND-1006 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=gpmi-nand:16m(boot),16m(kernel),128m(rootfs),-(usr) gpmi_debug_init
+TGE-LV-NAND-2001 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=gpmi-nand:16m(boot),16m(kernel),128m(rootfs),-(usr) gpmi_debug_init
+TGE-LV-NAND-2003 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=gpmi-nand:16m(boot),16m(kernel),128m(rootfs),-(usr) gpmi_debug_init
+TGE-LV-NAND-2005 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=gpmi-nand:16m(boot),16m(kernel),128m(rootfs),-(usr) gpmi_debug_init
+TGE-LV-Buildconfig-00044 
+TGE-LV-NAND-2007 kernel=uImage fdt_file=gpmi_weim rootfs=_x more_args=mtdparts=gpmi-nand:16m(boot),16m(kernel),128m(rootfs),-(usr) gpmi_debug_init
+TGE-LV-NAND-2012 kernel=uImage fdt_file=gpmi_weim rootfs=_x
+TGE-LV-NAND-1017 kernel=uImage fdt_file=gpmi_weim rootfs=_x
+TSG-LV-FBVG35-0001-stress kernel=uImage fdt_file=dtb_default rootfs=_fb
+TGE-LV-GPU-CONF-GLES-0005 kernel=uImage fdt_file=dtb_default rootfs=_fb
+TGE-LV-GPU-FB-CL11-0002 kernel=uImage fdt_file=dtb_default rootfs=_fb
+TGE-LV-GPU-FB-CL11-0003 kernel=uImage fdt_file=dtb_default rootfs=_fb
+TSG-LV-VG-0002-stress kernel=uImage fdt_file=dtb_default rootfs=_fb
+TGE-LV-GPU-XEGL-Wayland-0006 kernel=uImage fdt_file=dtb_default rootfs=_wld
+TGE-LV-GPU-DFB-0002 kernel=uImage fdt_file=dtb_default rootfs=_dfb
