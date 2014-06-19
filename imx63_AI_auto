@@ -381,16 +381,17 @@ TGE-LV-GPU-EGL-FB-0002 gles_viv.sh 11
 TGE-LV-TVIN-0040 tvin_test.sh 4
 TSG-LV-GPU-X-OPENVG-1001 vg_gc35x.sh 1
 TGE-LV-GPU-XEGL-Stress-0001 glesx_viv.sh 7
+TGE-LV-VPU-1024 /unit_tests/mxc_vpu_test.out -D "-f 2 -y 2 -i ${STREAM_PATH}/video/H264_MP30_interlaced_poc2_720x576.h264" && vpu_dec_vdoa.sh 17
+TGE-LV-HDMI-EDID-0010 hdmi_xrandr.sh 1
+TGE-LV-HDMI-EDID-0011 hdmi_xrandr.sh 2
+TGE-LV-Buildconfig-00044 dmesg
 TGE-LV-NOR-1104 compare.sh TGE-LV-NOR-1104 real_table; nor_test.sh 4
 TGE-LV-NOR-1116 compare.sh TGE-LV-NOR-1116 real_table; nor_test.sh 3
 TGE-LV-NOR-1301 compare.sh TGE-LV-NOR-1301 real_table; nor_test.sh 1
-TGE-LV-VPU-1024 /unit_tests/mxc_vpu_test.out -D "-f 2 -y 2 -i ${STREAM_PATH}/video/H264_MP30_interlaced_poc2_720x576.h264" && vpu_dec_vdoa.sh 17
 TGE-LV-NOR-1203 compare.sh TGE-LV-NOR-1203 real_table; nor_test.sh 1
 TGE-LV-NOR-1204 compare.sh TGE-LV-NOR-1204 real_table; nor_test.sh 4
 TGE-LV-NOR-1216 compare.sh TGE-LV-NOR-1216 real_table; nor_test.sh 3
 TGE-LV-NOR-1217 compare.sh TGE-LV-NOR-1217 real_table; nor_test.sh 8
-TGE-LV-HDMI-EDID-0010 hdmi_xrandr.sh 1
-TGE-LV-HDMI-EDID-0011 hdmi_xrandr.sh 2
 TGE-LV-NOR-1218 compare.sh TGE-LV-NOR-1218 real_table; flash_eraseall /dev/mtd3 && insmod ${LTPROOT}/testcases/bin/mtd_stresstest.ko dev=3 count=5 && rmmod mtd_stresstest.ko
 TGE-LV-NOR-1118 compare.sh TGE-LV-NOR-1118 real_table; nor_test.sh 5
 TGE-LV-NOR-1221 compare.sh TGE-LV-NOR-1221 real_table; if [ `uname -r |cut -c -6 ` \> "3.0.35" ]; then device=$(cat /proc/mtd | grep spi |  grep -v qspi |cut -c 1-4); blk=$(echo $device | cut -c 4);mkdir -p /mnt/src; flash_eraseall /dev/$device && mount -t jffs2 /dev/mtdblock$blk /mnt/src && bonnie++ -d /mnt/src -u 0:0 -s 10 -r 5; umount /mnt/src; else device=$(cat /proc/mtd | grep kernel | cut -c 1-4); blk=$(echo $device | cut -c 4); mkdir -p /mnt/src; flash_eraseall /dev/$device && mount -t jffs2 /dev/mtdblock$blk /mnt/src && bonnie++ -d /mnt/src -u 0:0 -s 10 -r 5; umount /mnt/src; fi
@@ -405,7 +406,6 @@ TGE-LV-NAND-1006 compare.sh TGE-LV-NAND-1006 real_table; flash_eraseall /dev/mtd
 TGE-LV-NAND-2001 compare.sh TGE-LV-NAND-2001 real_table; flash_eraseall /dev/mtd2 && insmod ${LTPROOT}/testcases/bin/mtd_speedtest.ko dev=2
 TGE-LV-NAND-2003 compare.sh TGE-LV-NAND-2003 real_table; flash_eraseall /dev/mtd2 ; insmod ${LTPROOT}/testcases/bin/mtd_pagetest.ko dev=2
 TGE-LV-NAND-2005 compare.sh TGE-LV-NAND-2005 real_table; flash_eraseall /dev/mtd2 && insmod ${LTPROOT}/testcases/bin/mtd_stresstest.ko dev=2 count=300 && rmmod mtd_stresstest.ko
-TGE-LV-Buildconfig-00044 dmesg
 TGE-LV-NAND-2007 compare.sh TGE-LV-NAND-2007 real_table; flash_eraseall /dev/mtd3; ubiattach /dev/ubi_ctrl -m 3 -d 0; tm=$(cat /proc/partitions | grep mtdblock3 | awk '{print $3}');stm=$(echo "$tm*8/10240" | bc ); sleep 15; ubimkvol /dev/ubi0 -N usr -m; mkdir /mnt/ubifs; mount -t ubifs ubi0:usr /mnt/ubifs; dt of=/mnt/ubifs/test_file bs=4k limit=$(echo "$stm"m) passes=2; umount /mnt/ubifs && ubirmvol /dev/ubi0 -n 0 && ubidetach /dev/ubi_ctrl -d 0;
 TGE-LV-NAND-2012 compare.sh TGE-LV-NAND-2012 real_table; insmod ${LTPROOT}/testcases/bin/mtd_nandecctest.ko
 TSG-LV-FBVG35-0001-stress compare.sh TSG-LV-FBVG35-0001-stress real_table; vg_gc35x.sh 3
